@@ -6,11 +6,12 @@ from django.views import generic
 from django.contrib import messages
 
 # Create your views here.
-def index(request):
-   # Render index.html
-   class StudentListView(generic.ListView):
+
+class StudentListView(generic.ListView):
       model = Student
-   class StudentDetailView(generic.DetailView):
+class StudentDetailView(generic.DetailView):
       model = Student
 
+def index(request):
+   # Render index.html
    return render( request, 'portfolio_app/index.html')
