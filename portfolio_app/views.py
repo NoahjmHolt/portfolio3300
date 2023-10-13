@@ -11,7 +11,10 @@ class StudentListView(generic.ListView):
       model = Student
 class StudentDetailView(generic.DetailView):
       model = Student
+class PortfolioDetailView(generic.DetailView):
+      model = Portfolio
 
 def index(request):
-   # Render index.html
-   return render( request, 'portfolio_app/index.html')
+      student_active_portfolios = Student.objects.select_related('portfolio').all().filter(portfolio__is_active=True)
+      print("active portfolio query set", student_active_portfolios)
+      return render( request, 'portfolio_app/index.html', {'student_active_portfolios':student_active_portfolios})
