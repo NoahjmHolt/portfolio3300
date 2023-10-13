@@ -9,4 +9,10 @@ urlpatterns = [
 # name='index' parameter is to dynamically create url
 # example in html <a href="{% url 'index' %}">Home</a>.
 path('', views.index, name='index'),
+
+#Ge05 part 2: adding student viewer
+path('students/', views.StudentListView.as_view(), name= 'students'),
+path('student/<int:pk>', views.StudentDetailView.as_view(), name='student-detail'),
+
 ]
+
